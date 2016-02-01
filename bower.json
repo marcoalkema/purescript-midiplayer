@@ -1,0 +1,25 @@
+{
+  "name": "purescript-midiplayer",
+  "version": "MIDI player",
+  "moduleType": [
+    "music",
+    "midi",
+    "midiplayer",
+    "purescript"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output",
+    "tests",
+    "js",
+    "tmp",
+    "bower.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "purescript-console": "*",
+     "midi":              "*"
+  }
+}
