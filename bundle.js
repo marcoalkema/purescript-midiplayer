@@ -194,10 +194,8 @@ module.exports = {
     },
     
     play: function() {
-	return function () {
 	    console.log('play: MIDI = ', MIDI);
 	    MIDI.Player.start();
-	};
     },
 
     stop: function() {
