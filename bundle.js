@@ -188,7 +188,7 @@ module.exports = {
 
     loadFile: function(dataUrl) {
 	return function () {
-	    console.log('play: MIDI = ', MIDI);
+	    console.log('loadFile: MIDI = ', MIDI);
 	    MIDI.Player.loadFile(dataUrl);
 	};
     },
