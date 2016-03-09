@@ -20,6 +20,8 @@
   ],
   "dependencies": {
     "purescript-console": "*",
-     "midi":              "*"
+    "midi": "*",
+    "purescript-eff-functions": "~0.1.1",
+    "purescript-foreign": "^0.7.2"
   }
 }

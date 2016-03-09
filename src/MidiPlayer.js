@@ -37,8 +37,8 @@ module.exports = {
     },
     
     play: function() {
-	    console.log('play: MIDI = ', MIDI);
-	    MIDI.Player.start();
+	console.log('play: MIDI = ', MIDI);
+	MIDI.Player.start();
     },
 
     stop: function() {
@@ -66,10 +66,58 @@ module.exports = {
 	MIDI.Player.endTime();
     },
 
+    setCurrentTime: function(r) {
+    	return function () {
+    	    console.log('Change and skip to current time: MIDI = ', MIDI);
+    	    MIDI.Player.currentTime = r;
+    	};
+    },
+    
     playing: function() {
 	console.log('playing MIDI = ', MIDI);
 	MIDI.Player.playing();
-    }
+    },
+
+    addEventListener: function() {
+	console.log('addEventListener MIDI = ', MIDI);
+	MIDI.Player.addEventListener();
+    }, 
+
+    removeEventListener: function() {
+	console.log('removeEventListener MIDI = ', MIDI);
+	MIDI.Player.removeEventListener();
+    },
+
+    getData: function() {
+	console.log("getData MIDI = ");
+	console.log(MIDI.Player.replayer.getData());
+    },
+
+    filtering: function() {
+	console.log("Fitlering :");
+	console.log( (MIDI.Player.replayer.getData()).map(function(data1) {
+	    return (data1[0].event.subtype);}));
+	
+    }	
+
+    // setLoopStartTime: function(r) {
+    // 	return function () {
+    // 	    console.log('Set new start time: MIDI = ', MIDI);
+    // 	    MIDI.Player.stop();
+    // 	    MIDI.Player.currentTime = r;
+    // 	    MIDI.Player.start();
+    // 	};
+    // },
+    
+    // setLoopEndTime: function(r) {
+    // 	return function () {
+    // 	    console.log('Set new start time: MIDI = ', MIDI);
+    // 	    MIDI.Player.stop();
+    // 	    MIDI.Player.currentTime(r);
+    // 	    MIDI.Player.start();
+    // 	};
+    // }
+
     
 };
 

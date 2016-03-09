@@ -2,10 +2,12 @@ module Main where
 
 import Prelude
 import Control.Monad.Eff
-import Control.Monad.Eff.Console
+import Data.Function.Eff as EffFn
 import MidiPlayer as Midi
 
-main :: forall e. Eff (midi :: Midi.MIDI, console :: CONSOLE | e) Unit
+foreign import data FILE :: !
+
+main :: forall e. Eff (midi :: Midi.MIDI, file :: FILE | e) Unit
 main = do
   Midi.loadFile arabesque
   Midi.loadPlugin { soundfontUrl: "bower_components/midi/examples/soundfont/"
@@ -15,7 +17,19 @@ main = do
 
 play :: forall e. Eff (midi :: Midi.MIDI | e) Unit
 play = do
-  Midi.play
+  playLoop 12000.0
   
+playLoop :: forall e. Number -> Eff (midi :: Midi.MIDI | e) Unit
+playLoop startTime = do
+  Midi.stop
+  Midi.setCurrentTime startTime
+  Midi.play
+  Midi.getData
+  Midi.filtering
+
 arabesque :: String
-arabesque = "midi/arabesqu.mid"
+arabesque = "midi/1bar8s.mid"
+
+-- purescript-eff-functions, hdgarroad
+-- purescript-node-file
+-- File effect

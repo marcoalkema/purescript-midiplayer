@@ -11,7 +11,7 @@ foreign import loadPlugin :: forall e. PluginConfigRec -> (Unit -> Eff (midi :: 
 
 foreign import setVolume :: forall e. Eff (midi :: MIDI | e) Unit
 
-foreign import loadFile :: forall e. DataURL -> Eff (midi :: MIDI | e) Unit
+foreign import loadFile :: forall e. String -> Eff (midi :: MIDI | e) Unit
 
 foreign import play :: forall e. Eff (midi :: MIDI | e) Unit
 
@@ -21,11 +21,21 @@ foreign import pause :: forall e. Eff (midi :: MIDI | e) Unit
 
 foreign import resume :: forall e. Eff (midi :: MIDI | e) Unit
 
-foreign import endtime :: forall e. Eff (midi :: MIDI | e) Unit
-
 foreign import currentTime :: forall e. Eff (midi :: MIDI | e) Unit
 
+foreign import endtime :: forall e. Eff (midi :: MIDI | e) Unit
+
+foreign import setCurrentTime :: Number -> forall e. Eff (midi :: MIDI | e) Unit
+
 foreign import playing :: forall e. Eff (midi :: MIDI | e) Unit
+
+foreign import addEventListener :: forall e. Eff (midi :: MIDI | e) Unit
+
+foreign import removeEventListener :: forall e. Eff (midi :: MIDI | e) Unit
+
+foreign import getData :: forall e. Eff (midi :: MIDI | e) Unit
+
+foreign import filtering :: forall e. Eff (midi :: MIDI | e) Unit
 
 type InstrumentName = String
 
