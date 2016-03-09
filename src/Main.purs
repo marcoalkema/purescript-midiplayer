@@ -1,4 +1,4 @@
-module Main where
+module MidiJS where
 
 import Prelude
 import Control.Monad.Eff
