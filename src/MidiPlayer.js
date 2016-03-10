@@ -31,7 +31,7 @@ module.exports = {
 
     loadFile: function(dataUrl) {
 	return function () {
-	    console.log('loadFile: MIDI = ', MIDI);
+	    console.log('loadFile: MIDI = ');
 	    MIDI.Player.loadFile(dataUrl);
 	};
     },
