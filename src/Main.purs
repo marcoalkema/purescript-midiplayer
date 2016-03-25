@@ -24,8 +24,6 @@ playLoop startTime = do
   Midi.stop
   Midi.setCurrentTime startTime
   Midi.play
-  Midi.getData
-  Midi.filtering
 
 arabesque :: String
 arabesque = "midi/1bar8s.mid"

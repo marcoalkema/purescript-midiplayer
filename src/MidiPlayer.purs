@@ -2,6 +2,8 @@ module MidiPlayer where
 
 import Prelude
 import Control.Monad.Eff
+import MidiJsTypes
+import Data.Foreign
 
 type DataURL = String
 
@@ -33,9 +35,9 @@ foreign import addEventListener :: forall e. Eff (midi :: MIDI | e) Unit
 
 foreign import removeEventListener :: forall e. Eff (midi :: MIDI | e) Unit
 
-foreign import getData :: forall e. Eff (midi :: MIDI | e) Unit
+foreign import getData :: forall e. Eff (midi :: MIDI | e) (Array Foreign)
 
-foreign import filtering :: forall e. Eff (midi :: MIDI | e) Unit
+foreign import getTicksPerBeat :: forall e. Eff (midi :: MIDI | e) Int
 
 type InstrumentName = String
 

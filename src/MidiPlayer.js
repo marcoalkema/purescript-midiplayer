@@ -31,7 +31,7 @@ module.exports = {
 
     loadFile: function(dataUrl) {
 	return function () {
-	    console.log('loadFile: MIDI = ');
+	    console.log('loadFile: MIDI = ', MIDI);
 	    MIDI.Player.loadFile(dataUrl);
 	};
     },
@@ -89,15 +89,14 @@ module.exports = {
     },
 
     getData: function() {
-	console.log("getData MIDI = ");
 	console.log(MIDI.Player.replayer.getData());
+	return MIDI.Player.replayer.getData();
     },
 
-    filtering: function() {
-	console.log("Fitlering :");
-	console.log( (MIDI.Player.replayer.getData()).map(function(data1) {
-	    return (data1[0].event.subtype);}));
-	
+    getTicksPerBeat: function() {
+            console.log(MidiFile(MIDI.Player.currentData).header.ticksPerBeat);
+            var midiFile = MidiFile(MIDI.Player.currentData);
+            return midiFile.header.ticksPerBeat;
     }	
 
     // setLoopStartTime: function(r) {
