@@ -90,7 +90,11 @@ module.exports = {
 
     getData: function() {
 	console.log(MIDI.Player.replayer.getData());
-	return MIDI.Player.replayer.getData();
+	var recData = new MIDI.Player.replayer.getData();
+	var midiObjects = recData.map(function(record){
+	    return record[0].event;
+	});
+	return midiObjects;
     },
 
     getTicksPerBeat: function() {

@@ -17,67 +17,71 @@ type MidiEvent = forall r. { deltaTime :: Int
                             , type' :: String | r}
 
 data MidiEventFoo  = TrackName { deltaTime :: Int
-                               , subType :: String
+                               , subtype :: String
                                , text :: String
-                               , type' :: String}
+                               , type :: String}
                    | InstrumentName { deltaTime :: Int
-                                    , subType :: String
+                                    , subtype :: String
                                     , text :: String
-                                    , type' :: String}
+                                    , type :: String}
                    | TimeSignature  { deltaTime :: Int
                                     , denominator :: Int
                                     , metronome :: Int
                                     , numerator :: Int
-                                    , subType :: String
+                                    , subtype :: String
                                     , thirtyseconds :: Int
-                                    , type' :: String}
+                                    , type :: String}
                 | KeySignature { deltaTime :: Int
                                , key :: Int
                                , scale :: Int
-                               , subType :: String
+                               , subtype :: String
                                , text :: String}
                 | Marker { deltaTime :: Int
-                         , subType :: String
+                         , subtype :: String
                          , text :: String
-                         , type' :: String}
-                | SpmteOffset { deltaTime :: Int
+                         , type :: String}
+                | SmpteOffset { deltaTime :: Int
                               , frame :: Int
                               , frameRate :: Int
                               , hour :: Int
                               , minute :: Int
                               , sec :: Int
                               , subFrame :: Int
-                              , subType :: String
-                              , type' :: String}
+                              , subtype :: String
+                              , type :: String}
                 | ProgramChange { channel :: Int
                                 , deltaTime :: Int
                                 , programNumber :: Int
-                                , subType :: String
-                                , type' :: String}
+                                , subtype :: String
+                                , type :: String}
                 | Controller { channel :: Int
                              , controllerType :: Int
                              , deltaTime :: Int
-                             , type' :: String
+                             , type :: String
                              , value :: Int}
                 | SetTempo { deltaTime :: Int
                            , microsecondsPerBeat :: Int
-                           , subType :: String
-                           , type' :: String}
+                           , subtype :: String
+                           , type :: String}
                 | NoteOn { channel :: Int
                          , deltaTime :: Int
                          , noteNumber :: Int
-                         , subType :: String
-                         , type' :: String
+                         , subtype :: String
+                         , type :: String
                          , velocity :: Int}
                 | NoteOff { channel :: Int
                           , deltaTime :: Int
                           , noteNumber :: Int
-                          , subType :: String
-                          , type' :: String
+                          , subtype :: String
+                          , type :: String
                           , velocity :: Int}
                 | EndOfTrack { deltaTime :: Int
-                             , subType :: String
-                             , type' :: String}
+                             , subtype :: String
+                             , type :: String}
+| MidiChannelPrefix { channel :: Int
+                    , deltaTime :: Int
+                    , subtype :: String
+                    , type :: String}
   
 derive instance eqMidiEvent :: Eq MidiEventFoo
 derive instance genericMidiEvent :: Generic MidiEventFoo
