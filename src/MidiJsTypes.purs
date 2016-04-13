@@ -3,88 +3,81 @@ module MidiJsTypes where
 import Prelude
 import Data.Generic
 
-type MidiObject =  { midiEvent :: MidiEventFoo
-                   , deltaTime :: Int}
+type MidiNote = { noteNumber    :: Int
+                , deltaTime     :: Number
+                , hasFirstTie   :: Boolean
+                , hasEndingTie  :: Boolean
+                , hasDot        :: Boolean }
 
-type MidiEvent2 = { ticksToEvent :: Int
-                  , event        :: MidiEvent
-                  , track        :: Int
-                  }
-
-type MidiEvent = forall r. { deltaTime :: Int
-                            , subType :: String
-                            , text :: String
-                            , type' :: String | r}
-
-data MidiEventFoo  = TrackName { deltaTime :: Int
-                               , subtype :: String
-                               , text :: String
-                               , type :: String}
-                   | InstrumentName { deltaTime :: Int
-                                    , subtype :: String
-                                    , text :: String
-                                    , type :: String}
-                   | TimeSignature  { deltaTime :: Int
-                                    , denominator :: Int
-                                    , metronome :: Int
-                                    , numerator :: Int
-                                    , subtype :: String
+data MidiEvent  = TrackName         { deltaTime :: Number
+                                    , subtype'  :: String
+                                    , text      :: String
+                                    , type'     :: String }
+                | InstrumentName    { deltaTime :: Number
+                                    , subtype'  :: String
+                                    , text      :: String
+                                    , type'     :: String }
+                | TimeSignature     { deltaTime     :: Number
+                                    , denominator   :: Int
+                                    , metronome     :: Int
+                                    , numerator     :: Int
+                                    , subtype'      :: String
                                     , thirtyseconds :: Int
-                                    , type :: String}
-                | KeySignature { deltaTime :: Int
-                               , key :: Int
-                               , scale :: Int
-                               , subtype :: String
-                               , text :: String}
-                | Marker { deltaTime :: Int
-                         , subtype :: String
-                         , text :: String
-                         , type :: String}
-                | SmpteOffset { deltaTime :: Int
-                              , frame :: Int
-                              , frameRate :: Int
-                              , hour :: Int
-                              , minute :: Int
-                              , sec :: Int
-                              , subFrame :: Int
-                              , subtype :: String
-                              , type :: String}
-                | ProgramChange { channel :: Int
-                                , deltaTime :: Int
-                                , programNumber :: Int
-                                , subtype :: String
-                                , type :: String}
-                | Controller { channel :: Int
-                             , controllerType :: Int
-                             , deltaTime :: Int
-                             , type :: String
-                             , value :: Int}
-                | SetTempo { deltaTime :: Int
-                           , microsecondsPerBeat :: Int
-                           , subtype :: String
-                           , type :: String}
-                | NoteOn { channel :: Int
-                         , deltaTime :: Int
-                         , noteNumber :: Int
-                         , subtype :: String
-                         , type :: String
-                         , velocity :: Int}
-                | NoteOff { channel :: Int
-                          , deltaTime :: Int
-                          , noteNumber :: Int
-                          , subtype :: String
-                          , type :: String
-                          , velocity :: Int}
-                | EndOfTrack { deltaTime :: Int
-                             , subtype :: String
-                             , type :: String}
-| MidiChannelPrefix { channel :: Int
-                    , deltaTime :: Int
-                    , subtype :: String
-                    , type :: String}
-  
-derive instance eqMidiEvent :: Eq MidiEventFoo
-derive instance genericMidiEvent :: Generic MidiEventFoo
-instance showMidiEvent :: Show MidiEventFoo where
+                                    , type'         :: String }
+                | KeySignature      { deltaTime :: Number
+                                    , key       :: Int
+                                    , scale     :: Int
+                                    , subtype'  :: String
+                                    , text      :: String }
+                | Marker            { deltaTime :: Number
+                                    , subtype'  :: String
+                                    , text      :: String
+                                    , type'     :: String }
+                | SmpteOffset       { deltaTime :: Number
+                                    , frame     :: Int
+                                    , frameRate :: Int
+                                    , hour      :: Int
+                                    , minute    :: Int
+                                    , sec       :: Int
+                                    , subFrame  :: Int
+                                    , subtype'  :: String
+                                    , type'     :: String}
+                | ProgramChange     { channel       :: Int
+                                    , deltaTime     :: Number
+                                    , programNumber :: Int
+                                    , subtype'      :: String
+                                    , type'         :: String}
+                | Controller        { channel         :: Int
+                                    , controllerType' :: Int
+                                    , deltaTime       :: Number
+                                    , type'           :: String
+                                    , value           :: Int}
+                | SetTempo          { deltaTime           :: Number
+                                    , microsecondsPerBeat :: Int
+                                    , subtype'            :: String
+                                    , type'               :: String}
+                | NoteOn            { channel    :: Int
+                                    , deltaTime  :: Number
+                                    , noteNumber :: Int
+                                    , subtype'   :: String
+                                    , type'      :: String
+                                    , velocity   :: Int}
+                | NoteOff           { channel    :: Int
+                                    , deltaTime  :: Number
+                                    , noteNumber :: Int
+                                    , subtype'   :: String
+                                    , type'      :: String
+                                    , velocity   :: Int}
+                | EndOfTrack        { deltaTime :: Number
+                                    , subtype'  :: String
+                                    , type'     :: String}
+                | MidiChannelPrefix { channel   :: Int
+                                    , deltaTime :: Number
+                                    , subtype'  :: String
+                                    , type'     :: String}
+                  
+derive instance eqMidiEvent :: Eq MidiEvent
+derive instance genericMidiEvent :: Generic MidiEvent
+instance showMidiEvent :: Show MidiEvent where
   show = gShow
 

@@ -98,31 +98,8 @@ module.exports = {
     },
 
     getTicksPerBeat: function() {
-            console.log(MidiFile(MIDI.Player.currentData).header.ticksPerBeat);
-            var midiFile = MidiFile(MIDI.Player.currentData);
-            return midiFile.header.ticksPerBeat;
-    }	
-
-    // setLoopStartTime: function(r) {
-    // 	return function () {
-    // 	    console.log('Set new start time: MIDI = ', MIDI);
-    // 	    MIDI.Player.stop();
-    // 	    MIDI.Player.currentTime = r;
-    // 	    MIDI.Player.start();
-    // 	};
-    // },
-    
-    // setLoopEndTime: function(r) {
-    // 	return function () {
-    // 	    console.log('Set new start time: MIDI = ', MIDI);
-    // 	    MIDI.Player.stop();
-    // 	    MIDI.Player.currentTime(r);
-    // 	    MIDI.Player.start();
-    // 	};
-    // }
-
-    
-};
+	return MidiFile(MIDI.Player.currentData).header.ticksPerBeat;
+    }
 
 // TODO eliminate
 var extend_TODO_eliminate = function(defaults, options) {

@@ -9,7 +9,7 @@ foreign import data FILE :: !
 
 main :: forall e. Eff (midi :: Midi.MIDI, file :: FILE | e) Unit
 main = do
-  Midi.loadFile arabesque
+  Midi.loadFile "midi/1bar8s.mid"
   Midi.loadPlugin { soundfontUrl: "bower_components/midi/examples/soundfont/"
                   , instrument:   "acoustic_grand_piano"
                   }
@@ -24,10 +24,3 @@ playLoop startTime = do
   Midi.stop
   Midi.setCurrentTime startTime
   Midi.play
-
-arabesque :: String
-arabesque = "midi/1bar8s.mid"
-
--- purescript-eff-functions, hdgarroad
--- purescript-node-file
--- File effect

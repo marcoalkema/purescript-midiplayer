@@ -8,6 +8,7 @@ import Data.Foreign
 type DataURL = String
 
 foreign import data MIDI :: !
+foreign import data MIDI2 :: !
 
 foreign import loadPlugin :: forall e. PluginConfigRec -> (Unit -> Eff (midi :: MIDI | e) Unit) -> Eff (midi :: MIDI | e) Unit                    
 
@@ -37,7 +38,7 @@ foreign import removeEventListener :: forall e. Eff (midi :: MIDI | e) Unit
 
 foreign import getData :: forall e. Eff (midi :: MIDI | e) (Array Foreign)
 
-foreign import getTicksPerBeat :: forall e. Eff (midi :: MIDI | e) Int
+foreign import getTicksPerBeat :: forall e. Eff (midi :: MIDI | e) Number
 
 type InstrumentName = String
 
