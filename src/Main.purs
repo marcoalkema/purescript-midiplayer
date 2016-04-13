@@ -9,7 +9,7 @@ foreign import data FILE :: !
 
 main :: forall e. Eff (midi :: Midi.MIDI, file :: FILE | e) Unit
 main = do
-  Midi.loadFile "midi/1bar8s.mid"
+  Midi.loadFile "midi/test2"
   Midi.loadPlugin { soundfontUrl: "bower_components/midi/examples/soundfont/"
                   , instrument:   "acoustic_grand_piano"
                   }
