@@ -41,40 +41,40 @@ data MidiEvent  = TrackName         { deltaTime :: Number
                                     , sec       :: Int
                                     , subFrame  :: Int
                                     , subtype   :: String
-                                    , type'     :: String}
+                                    , type'     :: String }
                 | ProgramChange     { channel       :: Int
                                     , deltaTime     :: Number
                                     , programNumber :: Int
                                     , subtype       :: String
-                                    , type'         :: String}
+                                    , type'         :: String }
                 | Controller        { channel         :: Int
                                     , controllerType  :: Int
                                     , deltaTime       :: Number
                                     , type'           :: String
-                                    , value           :: Int}
+                                    , value           :: Int }
                 | SetTempo          { deltaTime           :: Number
                                     , microsecondsPerBeat :: Int
                                     , subtype             :: String
-                                    , type'               :: String}
+                                    , type'               :: String }
                 | NoteOn            { channel    :: Int
                                     , deltaTime  :: Number
                                     , noteNumber :: Int
                                     , subtype    :: String
                                     , type'      :: String
-                                    , velocity   :: Int}
+                                    , velocity   :: Int }
                 | NoteOff           { channel    :: Int
                                     , deltaTime  :: Number
                                     , noteNumber :: Int
                                     , subtype    :: String
                                     , type'      :: String
-                                    , velocity   :: Int}
+                                    , velocity   :: Int }
                 | EndOfTrack        { deltaTime :: Number
                                     , subtype   :: String
-                                    , type'     :: String}
+                                    , type'     :: String }
                 | MidiChannelPrefix { channel   :: Int
                                     , deltaTime :: Number
                                     , subtype   :: String
-                                    , type'     :: String}
+                                    , type'     :: String }
                   
 derive instance eqMidiEvent :: Eq MidiEvent
 derive instance genericMidiEvent :: Generic MidiEvent
