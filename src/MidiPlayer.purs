@@ -26,7 +26,7 @@ foreign import resume :: forall e. Eff (midi :: MIDI | e) Unit
 
 foreign import currentTime :: forall e. Eff (midi :: MIDI | e) Unit
 
-foreign import endtime :: forall e. Eff (midi :: MIDI | e) Unit
+foreign import endTime :: forall e. Eff (midi :: MIDI | e) Unit
 
 foreign import setCurrentTime :: Number -> forall e. Eff (midi :: MIDI | e) Unit
 
@@ -39,6 +39,8 @@ foreign import removeEventListener :: forall e. Eff (midi :: MIDI | e) Unit
 foreign import getData :: forall e. Eff (midi :: MIDI | e) (Array Foreign)
 
 foreign import getTicksPerBeat :: forall e. Eff (midi :: MIDI | e) Number
+
+foreign import logger :: forall a e. a -> Eff (midi :: MIDI | e) Unit
 
 type InstrumentName = String
 

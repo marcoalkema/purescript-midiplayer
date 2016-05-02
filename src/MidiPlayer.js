@@ -99,7 +99,15 @@ module.exports = {
 
     getTicksPerBeat: function() {
 	return MidiFile(MIDI.Player.currentData).header.ticksPerBeat;
+    },
+
+    logger: function(a) {
+	return function() {
+	    console.log(a);
+	};
     }
+
+};
 
 // TODO eliminate
 var extend_TODO_eliminate = function(defaults, options) {
