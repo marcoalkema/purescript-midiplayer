@@ -17,7 +17,7 @@ main = do
 
 play :: forall e. Eff (midi :: Midi.MIDI | e) Unit
 play = do
-  playLoop 12000.0
+  playLoop 0.0
   
 playLoop :: forall e. Number -> Eff (midi :: Midi.MIDI | e) Unit
 playLoop startTime = do

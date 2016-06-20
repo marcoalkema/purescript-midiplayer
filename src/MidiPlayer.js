@@ -35,7 +35,7 @@ module.exports = {
 	    MIDI.Player.loadFile(dataUrl);
 	};
     },
-    
+
     play: function() {
 	console.log('play: MIDI = ', MIDI);
 	MIDI.Player.start();
@@ -97,6 +97,20 @@ module.exports = {
 	return midiObjects;
     },
 
+    getData2: function(sendMidi) {
+	return function(sendTicks){
+	    return function(){
+		var recData = new MIDI.Player.replayer.getData();
+		var data = recData.map(function(record){
+	    	    return record[0].event;});
+		sendMidi(data)();
+		var ticks = MidiFile(MIDI.Player.currentData).header.ticksPerBeat;
+		sendTicks(ticks)();
+	    };
+	};
+	
+    },
+
     getTicksPerBeat: function() {
 	return MidiFile(MIDI.Player.currentData).header.ticksPerBeat;
     },
@@ -106,7 +120,7 @@ module.exports = {
 	    console.log(a);
 	};
     }
-
+    
 };
 
 // TODO eliminate

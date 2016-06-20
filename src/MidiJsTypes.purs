@@ -75,6 +75,7 @@ data MidiEvent  = TrackName         { deltaTime :: Number
                                     , deltaTime :: Number
                                     , subtype   :: String
                                     , type'     :: String }
+                | Foo               {}
                   
 derive instance eqMidiEvent :: Eq MidiEvent
 derive instance genericMidiEvent :: Generic MidiEvent
